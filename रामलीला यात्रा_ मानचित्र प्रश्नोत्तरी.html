@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>रामलीला यात्रा: मानचित्र प्रश्नोत्तरी</title>
+<style>
+:root{--bg:#fbf4e6;--ink:#2a1a14;--mute:#6b5646;--card:#fffaf0;--line:#e3cfa8;--accent:#c2410c;--ok:#2f7d4f;--bad:#b3261e;--map:#f1dcae;--land:#e8c382;--sea:#cfe0dc;--route:#7a2e12;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1220;--ink:#f6e9d2;--mute:#c4aa8d;--card:#261a2e;--line:#4a3550;--accent:#f59e3b;--ok:#6fcf97;--bad:#ff8a80;--map:#2c2236;--land:#5b3d2e;--sea:#1f2c3a;--route:#f5c26b}}
+:root[data-theme="dark"]{--bg:#1a1220;--ink:#f6e9d2;--mute:#c4aa8d;--card:#261a2e;--line:#4a3550;--accent:#f59e3b;--ok:#6fcf97;--bad:#ff8a80;--map:#2c2236;--land:#5b3d2e;--sea:#1f2c3a;--route:#f5c26b}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Serif Devanagari","Noto Sans Devanagari","Kohinoor Devanagari","Nirmala UI",Mangal,Georgia,serif;line-height:1.75}
+.wrap{max-width:1000px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:clamp(26px,6vw,42px);line-height:1.3;margin:8px 0 6px}
+.lead{color:var(--mute);max-width:60ch;margin:0 0 16px}
+.bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px;font-size:15px}
+.prog{flex:1;min-width:140px;height:10px;background:var(--line);border-radius:6px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--accent);transition:width .4s}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+.mapbox{background:var(--map);border:2px solid var(--line);border-radius:14px;padding:6px}
+svg{width:100%;height:auto;display:block}
+.land{fill:var(--land);stroke:var(--route);stroke-width:1.5}
+.sea{fill:var(--sea)}
+.route{fill:none;stroke:var(--route);stroke-width:2;stroke-dasharray:3 5;stroke-linecap:round}
+.pin{cursor:pointer}
+.pin circle{fill:var(--card);stroke:var(--accent);stroke-width:2.5}
+.pin text{font:700 12px "Noto Sans Devanagari","Nirmala UI",Mangal,system-ui,sans-serif;fill:var(--ink);text-anchor:middle;pointer-events:none}
+.pin.done circle{fill:var(--ok);stroke:var(--ok)}
+.pin.done text.n{fill:#fff}
+.pin.sel circle{stroke-width:5}
+.pin:focus{outline:none}
+.pin:focus-visible circle{stroke:var(--ink);stroke-width:4}
+.panel{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:18px;min-height:360px}
+.panel h2{margin:0 0 6px;font-size:24px;line-height:1.4}
+.story{color:var(--mute);margin:0 0 14px}
+.q{font-weight:700;margin:0 0 10px;font-size:18px}
+.opt{display:block;width:100%;text-align:left;font:inherit;font-size:17px;padding:10px 14px;margin:0 0 8px;background:transparent;color:var(--ink);border:2px solid var(--line);border-radius:10px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:focus-visible,.btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 18%,transparent)}
+.opt.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 15%,transparent);text-decoration:line-through}
+.opt:disabled{cursor:default}
+.fb{margin:10px 0 0;padding:12px;border-left:5px solid var(--ok);background:color-mix(in srgb,var(--ok) 12%,transparent);border-radius:6px}
+.fb.hint{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,transparent)}
+.btn{font:600 16px inherit;font-family:inherit;padding:10px 20px;border:0;border-radius:999px;background:var(--accent);color:#fff;cursor:pointer;margin-top:12px}
+:root[data-theme="dark"] .btn{color:#1a1220}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn{color:#1a1220}}
+.big{font-size:44px;margin:4px 0}
+.foot{margin-top:22px;color:var(--mute);font-size:14px}
+.f{display:block;margin:0 0 12px;font-size:15px}
+.f input,.f select{display:block;width:100%;margin-top:4px;padding:10px 12px;font:inherit;font-size:17px;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:10px}
+.f input:focus-visible,.f select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+canvas{width:100%;height:auto;display:block;border:2px solid var(--line);border-radius:8px;margin:12px 0}
+.btn+.btn{margin-left:8px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>रामलीला यात्रा: श्रीराम के वनवास का मानचित्र</h1>
+  <p class="lead">मानचित्र पर किसी नंबर वाले पड़ाव को छुएँ, रामलीला का दृश्य पढ़ें और फिर प्रश्न का उत्तर दें। अयोध्या से लंका तक सभी आठ पड़ाव पूरे करें।</p>
+  <div class="bar"><span id="count">0 / 8 पड़ाव पूरे</span><div class="prog"><i id="pb"></i></div><span id="tm">समय: 00:00</span><span id="score">अंक: 0</span></div>
+  <div class="grid">
+    <div class="mapbox">
+      <svg viewBox="0 0 360 560" role="img" aria-label="अयोध्या से लंका तक श्रीराम की यात्रा का सरल मानचित्र">
+        <rect class="sea" x="0" y="0" width="360" height="560" rx="8"/>
+        <path class="land" d="M120 20 L200 14 L250 40 L305 70 L325 112 L292 132 L272 152 L302 172 L272 192 L246 218 L230 262 L222 330 L212 392 L196 440 L180 474 L164 440 L142 382 L116 322 L94 272 L64 230 L50 195 L80 170 L95 130 L105 80Z"/>
+        <ellipse class="land" cx="222" cy="520" rx="30" ry="22"/>
+        <path class="route" d="M215 80 L200 125 L180 160 L196 200 L130 290 L150 370 L185 455 L222 515"/>
+        <g id="pins"></g>
+      </svg>
+    </div>
+    <div class="panel" id="panel" aria-live="polite"></div>
+  </div>
+  <p class="foot">यह मानचित्र सीखने के लिए बनाया गया सरल चित्र है, पैमाने के अनुसार नहीं। कथाएँ वाल्मीकि रामायण और रामलीला की प्रस्तुति पर आधारित हैं।</p>
+</div>
+<script>
+var S=[
+{n:"अयोध्या",x:215,y:80,s:"रामलीला की शुरुआत कोसल की राजधानी अयोध्या से होती है। राज्याभिषेक की पूर्व संध्या पर रानी कैकेयी दो वरदान माँगती हैं और राम, सीता व लक्ष्मण के साथ चौदह वर्ष के वनवास पर निकल पड़ते हैं।",q:"अयोध्या के राजा और राम के पिता कौन थे?",o:["राजा जनक","राजा दशरथ","राजा सुग्रीव","राजा बाली"],a:1,f:"दशरथ ने कैकेयी को दिया वचन निभाया, भले ही उनका हृदय टूट गया। वचन निभाना रामायण का एक बड़ा संदेश है।"},
+{n:"शृंगवेरपुर",x:200,y:125,s:"गंगा के तट पर तीनों यात्री निषादों के राज्य में पहुँचते हैं। यहाँ राम राजसी वस्त्र त्याग देते हैं और रथ को वापस भेज देते हैं।",q:"राम, सीता और लक्ष्मण को गंगा पार किसने कराई?",o:["हनुमान","जटायु","निषादराज गुह","अंगद"],a:2,f:"गुह नाविकों के राजा और राम के सच्चे मित्र थे। राम ने उन्हें बराबरी का सम्मान दिया, यानी मित्रता पद से बड़ी होती है।"},
+{n:"प्रयागराज",x:180,y:160,s:"जहाँ गंगा और यमुना मिलती हैं, वहाँ परिवार एक महान ऋषि के आश्रम जाता है। ऋषि उन्हें पास की एक शांत पहाड़ी पर कुटिया बनाने की सलाह देते हैं।",q:"प्रयाग में राम किस ऋषि के आश्रम गए थे?",o:["ऋषि भरद्वाज","ऋषि विश्वामित्र","ऋषि अगस्त्य","ऋषि वाल्मीकि"],a:0,f:"प्रयाग आज भी नदियों का पवित्र संगम है और प्रसिद्ध कुंभ मेले का स्थान है।"},
+{n:"चित्रकूट",x:196,y:200,s:"चित्रकूट की हरी पहाड़ियों में राम पत्तों की कुटिया में सुखपूर्वक रहते हैं। एक दिन एक दुखी भाई सेना के साथ आता है और राम से घर लौटने की विनती करता है।",q:"चित्रकूट आकर राम की खड़ाऊँ (पादुका) अयोध्या ले जाने वाले कौन थे?",o:["शत्रुघ्न","लक्ष्मण","विभीषण","भरत"],a:3,f:"भरत ने खड़ाऊँ सिंहासन पर रखीं और चौदह वर्ष नगर के बाहर तपस्वी की तरह रहे। यह कर्तव्य और प्रेम की अनोखी मिसाल है।"},
+{n:"पंचवटी",x:130,y:290,s:"गोदावरी के पास पाँच वटवृक्षों के उपवन में कुटिया बनती है। यहीं से रावण की सीता-हरण की योजना शुरू होती है, जिसमें एक चमकता सुनहरा हिरण उसकी मदद करता है।",q:"राम और लक्ष्मण को दूर ले जाने के लिए सुनहरे हिरण का रूप किसने लिया?",o:["मारीच","कुंभकर्ण","मेघनाद","खर"],a:0,f:"लक्ष्मण ने सीता की रक्षा के लिए लक्ष्मण रेखा खींची थी। फिर भी रावण साधु का वेश बनाकर आया और उन्हें रेखा पार करने पर विवश कर दिया।"},
+{n:"किष्किंधा",x:150,y:370,s:"सीता की खोज में राम और लक्ष्मण को ऋष्यमूक पर्वत के पास एक चतुर और विनम्र वानर मिलता है। वह उन्हें अपने राजा तक ले जाता है और यह मित्रता युद्ध की दिशा बदल देती है।",q:"राम से सबसे पहले मिलने वाले और बाद में लंका में सीता को खोजने वाले भक्त वानर कौन थे?",o:["नल","हनुमान","जांबवान","अंगद"],a:1,f:"हनुमान समुद्र लाँघकर अशोक वाटिका में सीता से मिले और उनका संदेश तथा चूड़ामणि लेकर लौटे।"},
+{n:"रामसेतु",x:185,y:455,s:"दक्षिणी तट पर विशाल सागर रास्ता रोक लेता है। वानर सेना पत्थरों पर राम का नाम लिखती है और पत्थर तैरकर एक महान सेतु बन जाते हैं।",q:"रामसेतु बनाने वाले कुशल वानर शिल्पी (इंजीनियर) कौन थे?",o:["सुग्रीव","नल","संपाती","तारा"],a:1,f:"कथा कहती है कि मिलकर काम करने से यह संभव हुआ। एक छोटी गिलहरी ने भी रेत के कण ढोकर मदद की और राम का आशीर्वाद पाया।"},
+{n:"लंका",x:222,y:515,s:"अंतिम युद्ध सोने की लंका में होता है। दोनों ओर के वीर योद्धा गिरते हैं और दशमी (दशहरे) के दिन राम दस सिरों वाले रावण का वध करते हैं। अच्छाई की बुराई पर जीत होती है।",q:"रावण का कौन-सा भाई लंका छोड़कर राम के पक्ष में आया?",o:["विभीषण","कुंभकर्ण","इंद्रजीत","प्रहस्त"],a:0,f:"विभीषण ने परिवार से ऊपर धर्म को चुना और लंका के राजा बने। फिर राम अयोध्या लौटे और दीपों की कतारों से उनका स्वागत हुआ। यही पहली दीपावली थी।"}
+];
+var X=[
+{q:"राम को वनवास भेजने के लिए कैकेयी ने कितने वरदान माँगे थे?",o:["एक","दो","तीन","चार"],a:1,f:"दो वरदान: भरत के लिए राजगद्दी और राम के लिए चौदह वर्ष का वनवास।"},
+{q:"राम का रथ चलाने वाले मंत्री और सारथी कौन थे?",o:["सुमंत्र","जांबवान","सुषेण","वसिष्ठ"],a:0,f:"सुमंत्र राम को वन पहुँचाकर अकेले लौटे, तो पूरी अयोध्या शोक में डूब गई।"},
+{q:"प्रयाग के संगम पर कौन-सी दो नदियाँ मिलती हुई दिखती हैं?",o:["गंगा और यमुना","गंगा और गोदावरी","यमुना और नर्मदा","सरयू और गोमती"],a:0,f:"तीसरी नदी सरस्वती को अदृश्य माना जाता है, इसलिए इसे त्रिवेणी संगम भी कहते हैं।"},
+{q:"चौदह वर्ष तक भरत ने राम के नाम से राज्य कहाँ रहकर चलाया?",o:["नंदिग्राम","किष्किंधा","पंचवटी","मिथिला"],a:0,f:"भरत नंदिग्राम में तपस्वी की तरह रहे और सिंहासन पर राम की खड़ाऊँ रखकर सेवा करते रहे।"},
+{q:"सीता का हरण करने रावण किस वेश में आया था?",o:["साधु (भिक्षुक) के","सैनिक के","राजा के","वानर के"],a:0,f:"रावण साधु बनकर आया। गिद्धराज जटायु ने सीता को बचाने के लिए रावण से युद्ध किया।"},
+{q:"सुग्रीव के बड़े भाई का नाम क्या था, जिन्हें राम ने परास्त किया?",o:["बाली","अंगद","केसरी","नील"],a:0,f:"बाली के बाद सुग्रीव किष्किंधा के राजा बने और वानर सेना सीता की खोज में निकली।"},
+{q:"रामेश्वरम में राम ने किस देवता के शिवलिंग की स्थापना की?",o:["भगवान शिव","ब्रह्मा","सूर्यदेव","इंद्र"],a:0,f:"रामेश्वरम का अर्थ है “राम के ईश्वर”। युद्ध से पहले राम ने यहाँ शिव की आराधना की।"},
+{q:"लक्ष्मण को शक्ति लगने पर संजीवनी बूटी कौन लाया?",o:["अंगद","हनुमान","नल","जांबवान"],a:1,f:"बूटी पहचान न पाने पर हनुमान पूरा पर्वत उठा लाए और लक्ष्मण के प्राण बचे।"}
+];
+S.forEach(function(p,i){p.qs=[{q:p.q,o:p.o,a:p.a,f:p.f},X[i]]});
+var SCH=["दिल्ली स्कूल ऑफ एक्सीलेंस, बस्ती","डॉन वास्को स्कूल, बस्ती","ओमनी इंटरनेशनल स्कूल, बस्ती","सेंट फ्रांसिस स्कूल, बस्ती","गन्ना विकास इंटर कॉलेज, संत कबीर नगर","यूनिक साइंस एकेडमी, बस्ती","उर्मिला एजुकेशनल एकेडमी, बस्ती","सरस्वती बालिका विद्या मन्दिर, बस्ती","एसडीएस पब्लिक स्कूल, महादेवा, बस्ती","महेश प्रताप इंटर कॉलेज, रुधौली, बस्ती","एस. पी. चिल्ड्रेन एकेडमी, बस्ती","सेंट जोसेफ स्कूल, बस्ती","ब्लूमिंग बड्स हायर सेकेंडरी स्कूल, बस्ती","फिनिक्स पब्लिक स्कूल, बस्ती","श्री राम पब्लिक स्कूल, बस्ती","इंडियन पब्लिक स्कूल, बस्ती","सावित्री विद्या विहार, बस्ती","जागरण पब्लिक स्कूल, बस्ती","पंडित चतुर्भुज इंटर कॉलेज, कप्तानगंज","लिटिल फ्लावर स्कूल, बस्ती","अन्य विद्यालय"];
+function fresh(){return S.map(function(){return{qi:0,qs:[{done:0,first:1,wrong:{}},{done:0,first:1,wrong:{}}]}})}
+var st=fresh(),cur=0,score=0,started=false,t0=0,tmr=null,secs=0,player={name:"",school:""};
+var pins=document.getElementById("pins"),panel=document.getElementById("panel");
+var NS="http://www.w3.org/2000/svg";
+S.forEach(function(p,i){
+  var g=document.createElementNS(NS,"g");g.setAttribute("class","pin");g.setAttribute("tabindex","0");g.setAttribute("role","button");g.setAttribute("aria-label","पड़ाव "+(i+1)+": "+p.n);
+  var left=i%2===1;
+  g.innerHTML='<circle cx="'+p.x+'" cy="'+p.y+'" r="12"/><text class="n" x="'+p.x+'" y="'+(p.y+4)+'">'+(i+1)+'</text><text x="'+(p.x+(left?-18:18))+'" y="'+(p.y+4)+'" style="text-anchor:'+(left?'end':'start')+';font-size:11px">'+p.n+'</text>';
+  g.onclick=function(){go(i)};
+  g.onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();go(i)}};
+  pins.appendChild(g);
+});
+function fmt(s){var m=Math.floor(s/60),r=s%60;return(m<10?"0":"")+m+":"+(r<10?"0":"")+r}
+function tick(){secs=Math.floor((Date.now()-t0)/1000);document.getElementById("tm").textContent="समय: "+fmt(secs)}
+function ndone(){return st.filter(function(x){return x.qs[1].done}).length}
+function upd(){
+  var ps=pins.children;
+  for(var i=0;i<ps.length;i++){ps[i].setAttribute("class","pin"+(st[i].qs[1].done?" done":"")+(started&&i===cur?" sel":""))}
+  document.getElementById("count").textContent=ndone()+" / 8 पड़ाव पूरे";
+  document.getElementById("pb").style.width=(ndone()/S.length*100)+"%";
+  document.getElementById("score").textContent="अंक: "+score;
+}
+function intro(){
+  var o=SCH.map(function(x){return"<option>"+x+"</option>"}).join("");
+  panel.innerHTML='<h2>यात्रा शुरू करें</h2><p class="story">अपना नाम लिखें और विद्यालय चुनें। सभी आठ पड़ाव पूरे करने पर आपको सनातन धर्म संस्था का प्रमाण पत्र मिलेगा। समय की गिनती पहले प्रश्न से पहले शुरू हो जाती है।</p><label class="f">आपका नाम<input id="nm" maxlength="40" autocomplete="name"></label><label class="f">विद्यालय<select id="sc">'+o+'</select></label><p class="fb hint" id="er" hidden>कृपया अपना नाम लिखें।</p><button class="btn" id="go">यात्रा शुरू करें</button>';
+  document.getElementById("go").onclick=function(){
+    var n=document.getElementById("nm").value.trim();
+    if(!n){document.getElementById("er").hidden=false;document.getElementById("nm").focus();return}
+    player.name=n;player.school=document.getElementById("sc").value;
+    started=true;t0=Date.now();clearInterval(tmr);tmr=setInterval(tick,1000);tick();go(0);
+  };
+}
+function go(i){if(!started)return;cur=i;render()}
+function render(){
+  var p=S[cur],s=st[cur],d=p.qs[s.qi],r=s.qs[s.qi];
+  var h='<h2>पड़ाव '+(cur+1)+': '+p.n+'</h2><p class="story">'+p.s+'</p><p class="q">प्रश्न '+(s.qi+1)+' / 2: '+d.q+'</p>';
+  d.o.forEach(function(t,k){
+    var c="",dis="";
+    if(r.done){dis=" disabled";if(k===d.a)c=" ok"}
+    else if(r.wrong[k]){c=" no";dis=" disabled"}
+    h+='<button class="opt'+c+'"'+dis+' data-k="'+k+'">'+t+'</button>';
+  });
+  if(r.done)h+='<div class="fb"><b>सही उत्तर!</b> '+d.f+'</div>';
+  else if(Object.keys(r.wrong).length)h+='<div class="fb hint"><b>अभी नहीं।</b> ऊपर की कथा फिर से पढ़ें और दूसरा उत्तर चुनें।</div>';
+  if(r.done){
+    if(s.qi===0)h+='<button class="btn" id="nq">अगला प्रश्न</button>';
+    else if(ndone()===S.length)h+='<button class="btn" id="fin">मेरा प्रमाण पत्र देखें</button>';
+    else h+='<button class="btn" id="nx">अगला पड़ाव</button>';
+  }
+  panel.innerHTML=h;
+  panel.querySelectorAll(".opt").forEach(function(b){b.onclick=function(){pick(+b.dataset.k)}});
+  var e=document.getElementById("nq");if(e)e.onclick=function(){s.qi=1;render()};
+  e=document.getElementById("nx");if(e)e.onclick=function(){var j=cur;do{j=(j+1)%S.length}while(st[j].qs[1].done&&j!==cur);go(j)};
+  e=document.getElementById("fin");if(e)e.onclick=result;
+  upd();
+}
+function pick(k){
+  var d=S[cur].qs[st[cur].qi],r=st[cur].qs[st[cur].qi];
+  if(k===d.a){r.done=1;if(r.first)score++}
+  else{r.wrong[k]=1;r.first=0}
+  render();
+}
+function cert(c){
+  var x=c.getContext("2d"),W=1200,H=850,F="'Noto Serif Devanagari','Noto Sans Devanagari','Kohinoor Devanagari','Nirmala UI',Mangal,serif";
+  x.fillStyle="#fff8e7";x.fillRect(0,0,W,H);
+  x.strokeStyle="#c2410c";x.lineWidth=14;x.strokeRect(30,30,W-60,H-60);
+  x.strokeStyle="#7a2e12";x.lineWidth=3;x.strokeRect(54,54,W-108,H-108);
+  x.textAlign="center";
+  function t(s,y,sz,col,w){x.fillStyle=col;var z=sz;x.font=(w||"normal")+" "+z+"px "+F;while(x.measureText(s).width>W-220&&z>18){z-=2;x.font=(w||"normal")+" "+z+"px "+F}x.fillText(s,W/2,y)}
+  t("सनातन धर्म संस्था",140,54,"#7a2e12","bold");
+  t("श्रीरामलीला महोत्सव, बस्ती: सप्तम वर्ष",195,30,"#2a1a14");
+  t("प्रमाण पत्र",305,84,"#c2410c","bold");
+  t("यह प्रमाणित किया जाता है कि",385,32,"#2a1a14");
+  t(player.name,485,64,"#7a2e12","bold");
+  x.fillStyle="#c2410c";x.fillRect(250,505,700,3);
+  t(player.school,560,32,"#2a1a14");
+  t("ने “रामलीला यात्रा” प्रश्नोत्तरी के सभी आठ पड़ाव पूरे किए,",630,32,"#2a1a14");
+  t("16 में से "+score+" अंक प्राप्त किए और यात्रा "+fmt(secs)+" में पूरी की।",680,32,"#2a1a14");
+  t("जय श्री राम",750,42,"#c2410c","bold");
+  t(new Date().toLocaleDateString("hi-IN"),785,24,"#6b5646");
+}
+function result(){
+  clearInterval(tmr);tick();
+  var m=score===16?"जय श्री राम! आप सच्चे रामलीला विद्वान हैं।":score>=12?"शानदार! आपको रामायण की बहुत अच्छी जानकारी है।":score>=8?"अच्छा प्रयास! कथाएँ फिर से पढ़ें और ज़्यादा अंक पाने की कोशिश करें।":"अच्छी शुरुआत! हर पड़ाव दोबारा देखें और राम की कथा सीखें।";
+  panel.innerHTML='<h2>यात्रा पूरी हुई!</h2><p class="q">अंक: '+score+' / 16, समय: '+fmt(secs)+'</p><p class="story">'+m+' चौदह वर्ष बाद राम अयोध्या लौटे और नगर ने दीपों की कतारें सजाईं। इसीलिए दशहरे के बीस दिन बाद हम दीपावली मनाते हैं।</p><canvas id="cv" width="1200" height="850" aria-label="सनातन धर्म संस्था का प्रमाण पत्र"></canvas><button class="btn" id="sv">प्रमाण पत्र सहेजें</button><button class="btn" id="again">फिर से खेलें</button><p class="story" id="dm"></p>';
+  cert(document.getElementById("cv"));
+  document.getElementById("sv").onclick=function(){
+    var dm=document.getElementById("dm");
+    document.getElementById("cv").toBlob(function(b){
+      var u=window.claude&&claude.use?claude.use("downloads"):Promise.resolve(null);
+      u.then(function(d){
+        if(!d){dm.textContent="सहेजने की सुविधा यहाँ उपलब्ध नहीं है। कृपया प्रमाण पत्र का स्क्रीनशॉट ले लें।";return}
+        return d.save({filename:"ramleela-pramaan-patra.png",data:b}).then(function(){dm.textContent="प्रमाण पत्र सहेज लिया गया।"},function(e){if(!e||e.code!=="declined")dm.textContent="प्रमाण पत्र सहेजा नहीं जा सका। कृपया स्क्रीनशॉट ले लें।"});
+      });
+    },"image/png");
+  };
+  document.getElementById("again").onclick=function(){
+    st=fresh();score=0;secs=0;started=false;clearInterval(tmr);
+    document.getElementById("tm").textContent="समय: 00:00";upd();intro();
+  };
+  upd();
+}
+upd();intro();
+</script>
+</body>
+</html>
